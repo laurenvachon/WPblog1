@@ -1,0 +1,73 @@
+{#
+ # Golf entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a Golf entry’s URL is
+ # requested. That’s because the Golf section’s Template setting is
+ # set to “Golf/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested Golf entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+
+  <!-- intro -->
+  <section class="fullPanel intro" data-aos="fade-left">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="col-sm-12 col-md-6">
+          <h1> {{ entry.pageTitle }} </h1>
+          <h2 class="h4">{{ entry.titleShort }}</h2>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          {{ entry.sectionText }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end of intro -->
+
+
+  <div class="container">
+    <div class="col-xs-12">
+      <div class="row">
+
+        <!-- callouts -->
+        <!-- {% for entry in entry.callout %}
+            {% for asset in entry.calloutImage %}
+            <a href="{{ entry.calloutLink }}" class="calloutPhoto col-xs-6" style="background-image:url({{ asset.url }});">
+              <h1>{{ entry.calloutTitle }}</h1>
+              <p> {{ entry.calloutText }} </p>
+            </a>
+            {% endfor %}
+        {% endfor %} -->
+        <!-- end of callouts -->
+      </div> <!-- end of row -->
+
+
+
+      <div class="row">
+        {% for entry in entry.photoGrid %}
+        <div class="item">
+          <div class="well">
+            {{ entry.photoText }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+{% endblock %}
